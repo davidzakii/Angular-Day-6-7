@@ -1,0 +1,13 @@
+<div class="card" style="width: 18rem;height: 550px;">
+<button (click)="cardClick()" class="btn bg-light">
+  <img [src]="productItem.image" height="250px" class="card-img-top" alt="...">
+  <div class="card-body d-flex flex-column justify-content-between">
+    <h5 class="card-title">name : {{productItem.title}}</h5>
+    <p class="card-text">category : {{productItem.category}}</p>
+    <p class="card-text">price : {{productItem.price | currency : "EGP" }}</p>
+    <p class="card-text" [ngStyle]="{'color':productItem.rating.count ==0?'red':'green'}">{{productItem.rating.count | showStock}}</p>
+  </div>
+</button>
+  <button (click)="increaseCounter()"    class="btn btn-primary align-self-center w-75">add Card</button>
+</div>
+

@@ -1,0 +1,54 @@
+<div class="container" >
+  <form class="border my-5"  [formGroup]="reactiveForm" (ngSubmit)="submitReactiveForm()">
+    <p class="border fw-bold opacity-75 bg-muted p-3">Angular Reactive Form</p>
+    <div class="m-3">
+      <label for="nameInput" class="form-label">Name</label>
+      <input formControlName="name" type="text" class="form-control" id="nameInput" aria-describedby="emailHelp">
+      <div class="text-danger" *ngIf="formControls['name'].touched&&formControls['name'].invalid">
+        <small *ngIf="formControls['name'].errors?.['required']">this filed is required</small>
+      </div>
+    </div>
+    <div class="m-3">
+      <label for="emailInput" class="form-label">Email</label>
+      <input formControlName="email" type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+      <div class="text-danger" *ngIf="formControls['email'].touched&&formControls['email'].invalid">
+        <small *ngIf="formControls['email'].errors?.['required']">this filed is required</small>
+        <small *ngIf="formControls['email'].errors?.['pattern']">this email is Not valid</small>
+      </div>
+    </div>
+    <div class="m-3">
+      <label for="userNameInput" class="form-label">User Name</label>
+      <input formControlName="userName" type="text" class="form-control" id="userNameInput" aria-describedby="emailHelp">
+      <div class="text-danger" *ngIf="formControls['userName'].touched&&formControls['userName'].invalid">
+        <small *ngIf="formControls['userName'].errors?.['required']">this filed is required</small>
+        <small *ngIf="formControls['userName'].errors?.['pattern']">contain no space</small>
+      </div>
+    </div>
+    <div class="m-3">
+      <label for="passwordInput" class="form-label">Password</label>
+      <input formControlName="password" type="password" class="form-control" id="passwordInput">
+      <div class="text-danger" *ngIf="formControls['password'].touched&&formControls['password'].invalid">
+        <small *ngIf="formControls['password'].errors?.['required']">this filed is required</small>
+        <small *ngIf="formControls['password'].errors?.['pattern']">
+          password contains at least one
+          lowercase , one uppercase , at least one digit
+          and special character [ example : *@%$# ] ]</small>
+      </div>
+    </div>
+    <div class="m-3">
+      <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
+      <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPasswordInput">
+      <div class="text-danger" *ngIf="formControls['confirmPassword'].touched&&formControls['confirmPassword'].invalid">
+        <small *ngIf="formControls['confirmPassword'].errors?.['required']">this filed is required</small>
+        <small *ngIf="formControls['confirmPassword'].errors?.['pattern']"><!--&&formControls['confirmPassword'].errors?.['mismatch'] -->
+          this pasword not confirm
+        </small>
+      </div>
+    </div>
+    <button [disabled]="reactiveForm.invalid" type="submit" class="btn btn-success m-3">Submit</button>
+  </form>
+  <p class="text-dark text-center fw-bold">
+    Already have account !
+    <a routerLink="/login" class="text-dark">Login</a>
+  </p>
+</div>

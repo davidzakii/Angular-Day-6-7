@@ -1,0 +1,53 @@
+<div class="container">
+  <form
+    class="w-50 m-auto my-5 border d-flex flex-column justify-content-between"
+    #loginForm = "ngForm"
+    (ngSubmit)="submitLogin(loginForm.value)"
+  >
+    <div class="m-3">
+      <label for="emailInput" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="emailInput"
+        aria-describedby="emailHelp"
+        ngModel
+        name="email"
+        required
+        #emailInput="ngModel"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      />
+      <div *ngIf="emailInput.touched && emailInput.invalid" class="text-danger">
+        <small *ngIf="emailInput.errors?.['required']">
+          this filed is reqired
+        </small>
+        <small *ngIf="emailInput.errors?.['pattern']">
+          this email not valid
+        </small>
+      </div>
+    </div>
+    <div class="m-3">
+      <label for="passwordInput" class="form-label">Password</label>
+      <input
+      type="password"
+      class="form-control"
+      id="passwordInput"
+      ngModel
+      name="password"
+      #passwordInput = "ngModel"
+      required
+      />
+      <small *ngIf="passwordInput.touched && passwordInput.invalid" class="text-danger">
+        this filed is required
+      </small>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary w-75 m-3 align-self-center">
+      Login
+    </button>
+  </form>
+
+  <p class="text-dark text-center fw-bold">
+    Don't have account ?
+    <a routerLink="/register" class="text-dark">Register</a>
+  </p>
+</div>

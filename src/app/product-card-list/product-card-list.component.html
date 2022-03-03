@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col my-5" *ngFor="let product of productDatails">
+      <app-product-card-item
+      [productItem]="product"
+      (childData)="handleData($event)"
+      ></app-product-card-item>
+    </div>
+  </div>
+  </div>
